@@ -1,5 +1,7 @@
 let intentos = 6;
-let palabra = "APPLE";
+const palabras = ["APPLE", "TABLE", "DANCE", "YOUTH", "BEACH", "PIZZA"];
+let palabra = palabras[Math.floor(Math.random() * 5)];
+console.log(palabra);
 
 const button = document.getElementById("guess-button");
 button.addEventListener("click", intentar);
