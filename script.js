@@ -1,10 +1,23 @@
 let intentos = 6;
-const palabras = ["APPLE", "TABLE", "DANCE", "YOUTH", "BEACH", "PIZZA"];
-let palabra = palabras[Math.floor(Math.random() * 5)];
-console.log(palabra);
-
+const palabrasBackup = ["ERROR", "AZUL", "CARRO", "GORDO", "NADAR", "PERRO"];
+let palabra;
 const button = document.getElementById("guess-button");
 button.addEventListener("click", intentar);
+const API = "https://random-word-api.herokuapp.com/word?length=5&lang=es";
+
+fetch(API)
+  .then((response) => {
+    response.json().then((body) => {
+      palabra = body[0].toUpperCase();
+      button.disabled = false;
+      button.classList.remove("disabled");
+      console.log('palabra', palabra);
+    })
+  })
+  .catch(() => {
+    palabra = palabrasBackup[Math.round(Math.random() * 5)];
+    console.log('palabra', palabra);
+  });
 
 function intentar() {
   const GRID = document.getElementById("grid");
