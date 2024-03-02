@@ -52,7 +52,7 @@ function intentar() {
   intentos--;
   
   if (intentos==0){
-    terminar("PERDISTE!")
+    terminar(`PERDISTE!. La palabra era: ${palabra}`);
 }
 
 }
